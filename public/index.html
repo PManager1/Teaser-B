@@ -279,7 +279,7 @@
           return;
         }
         try {
-          const res = await fetch(`https://xmkvtmgtwb.execute-api.us-east-1.amazonaws.com/dev/api/autocomplete?q=${encodeURIComponent(query)}`);
+          const res = await fetch(`https://xmkvtmgtwb.execute-api.us-east-1.amazonaws.com/dev/api/autocomplete?input=${encodeURIComponent(query)}`);
           const cities = await res.json();
           suggestionsContainer.innerHTML = '';
           if (cities.length > 0) {
