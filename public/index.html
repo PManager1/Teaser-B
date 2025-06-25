@@ -273,15 +273,19 @@
       });
 
       // City autocomplete
-      async function fetchCities(query, suggestionsContainer, inputElement) {
+ // City autocomplete
+    async function fetchCities(query, suggestionsContainer, inputElement) {
         if (query.length < 2) {
           suggestionsContainer.classList.add('hidden');
           return;
         }
         try {
           const res = await fetch(`https://xmkvtmgtwb.execute-api.us-east-1.amazonaws.com/dev/api/autocomplete?input=${encodeURIComponent(query)}`);
-          const cities = await res.json();
+          const data = await res.json();
+          const cities = data.suggestions || [];
+
           suggestionsContainer.innerHTML = '';
+
           if (cities.length > 0) {
             cities.forEach(city => {
               const div = document.createElement('div');
